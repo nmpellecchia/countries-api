@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+
+////// Bootstrap imports //////
+import 'bootstrap/dist/css/bootstrap.min.css';
+/* import Button from 'react-bootstrap/Button'; */
+////// Components //////
+import { getAllCountries } from './utilities/services/countries.js';
 
 function App() {
+  // useEffect is used to execute things that don't directly affect outputs
+  useEffect(() => {
+    getAllCountries();
+  }, []); // An empty arr tells this effect to execute only once after initial rendering
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Hello!</p>
     </div>
   );
 }
