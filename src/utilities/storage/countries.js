@@ -3,11 +3,7 @@ const MAX_COUNTRIES = 25;
 export function storeCountries(allCountries) {
   const countriesChunks = sliceCountries(allCountries);
 
-  //////////////////////////////
-  ////// Code commented for testing purposes
-  /////////////////////////////
   let offset = 0;
-  /*  console.log(allCountries); */
   for (let i = 0; i < countriesChunks.length; i++) {
     // dynamically mark wich countries are inside setting the offsets.
     let newOffset = offset + countriesChunks[i].length;
@@ -29,19 +25,14 @@ function sliceCountries(allCountries) {
   return countriesChunks;
 }
 
-export function getAllCountries() {
-  /* const regEx = /countries_\d+_\d+/gim;
-  const allCountries = [];
+export function getCountries(offset) {
+  const exp = `countries_${offset}_${offset + MAX_COUNTRIES - 1}`;
+  const allCountries = JSON.parse(localStorage.getItem(exp));
 
-  if (localStorage.getItem('test_name').match(regEx)) {
-    allCountries.push(JSON.parse(localStorage.getItem('test_name')));
-  }
-
-  const allCountries = JSON.parse(localStorage.getItem('test_name'));
   // Check if the key doesn't exist
   if (allCountries === null) {
     throw new Error('Countries not found inside local storage');
   }
-  return allCountries; */
-  throw new Error('xd');
+
+  return allCountries;
 }
