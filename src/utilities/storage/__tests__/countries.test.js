@@ -36,7 +36,7 @@ const countries = [
 // I decided to intercept localStorage calls and mock implementation
 // instead of overwriting the normal behaviour to the storage
 describe('Storing items', () => {
-  let setItemMock /*, getItemMock */;
+  let setItemMock;
   /* let mockStorage = {}; */
 
   beforeAll(() => {
@@ -45,23 +45,10 @@ describe('Storing items', () => {
       .mockImplementation((key, value) => {
         mockStorage[key] = value;
       });
-
-    /* getItemMock = jest
-      .spyOn(global.Storage.prototype, 'getItem')
-      .mockImplementation(key => {
-        mockStorage[key];
-      }); */
   });
-
-  /* beforeEach(() => {
-    // Reset storage value
-    mockStorage = {};
-  }); */
-
   afterAll(() => {
     // Remove everything after the test to avoid problems
     setItemMock.mockRestore();
-    /*  getItemMock.mockRestore(); */
   });
 
   test('Should store at least one item', () => {
@@ -88,11 +75,6 @@ describe('Retrieving countries from storage', () => {
         mockStorage[key];
       });
   });
-
-  /* beforeEach(() => {
-    // Reset storage value
-    mockStorage = {};
-  }); */
 
   afterAll(() => {
     // Remove everything after the test to avoid problems
