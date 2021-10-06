@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ////// Components //////
 import { getAllCountries } from './utilities/services/countries.js';
 import { Header } from './components/header/header.js';
+import { MainBody } from './components/main/MainPage.js';
 
 function App() {
   // useEffect is used to execute things that don't directly affect outputs
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <MainBody></MainBody>
     </div>
   );
 }
