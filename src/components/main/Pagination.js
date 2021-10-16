@@ -51,7 +51,7 @@ export function PagesList(props) {
             items.push(
               <Pagination.Next
                 key={'page-next'}
-                disabled={props.currentPage < props.pages ? false : true}
+                disabled={props.currentPage < props.pages - 1 ? false : true}
                 onClick={e => {
                   e.preventDefault();
                   props.clickHandler(props.currentPage + 1);
