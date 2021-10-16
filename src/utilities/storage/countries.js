@@ -26,6 +26,8 @@ function sliceCountries(allCountries) {
 }
 
 export function getCountries(offset) {
+  console.log('offset');
+  console.log(offset);
   const exp = `countries_${offset}_${offset + MAX_COUNTRIES - 1}`;
   const allCountries = JSON.parse(localStorage.getItem(exp));
 

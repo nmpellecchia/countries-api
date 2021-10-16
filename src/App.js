@@ -10,7 +10,7 @@ import { Header } from './components/header/header.js';
 import { MainBody } from './components/main/MainPage.js';
 
 function App() {
-  /* const MAX_COUNTRIES = 25; */
+  /*  */
   const getNumberOfPages = () => {
     let amountOfPages = 0;
     for (let i = 0; i < localStorage.length; i++) {
