@@ -54,15 +54,15 @@ function CountryCard(props) {
   return (
     <Col>
       <CardGroup>
-        <Card className="bg-dark text-white">
+        <Card className="bg-dark text-white m-1">
           {/* I will remove the flags for now, as the API is having an error at the time of writing this code */}
-          {/* <Card.Img
-          variant="top"
-          src={country.flag}
-          alt={`Flag of ${country.name}`}
-        /> */}
+          <Card.Img
+            variant="top"
+            src={country.flags.svg}
+            alt={`Flag of ${country.name.common}`}
+          />
           <Card.Body>
-            <Card.Text>{country.name}</Card.Text>
+            <Card.Text>{country.name.common}</Card.Text>
             <Card.Link href="#">View more</Card.Link>
           </Card.Body>
         </Card>

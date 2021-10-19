@@ -1,6 +1,11 @@
 import jQuery from 'jquery';
 
-const URL = 'https://restcountries.eu/rest/v2/';
+// NOTE: API CHANGED URL TO https://restcountries.com/v3.1/all
+// NEEDS TESTING IN CASE SOMETHING BREAKS
+// IT SHOULD NOT BUT I'M NOT SURE
+
+/* const URL = 'https://restcountries.eu/rest/v2/'; */
+const URL = 'https://restcountries.com/v3.1/';
 
 export async function getAllCountries() {
   try {
