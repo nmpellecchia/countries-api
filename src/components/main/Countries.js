@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getCountries } from '../../utilities/storage/countries';
 //
 import Container from 'react-bootstrap/Container';
@@ -6,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import Button from 'react-bootstrap/Button';
 
 export function CountryList(props) {
   const [slicedCountries, setSlicedCountries] = useState([]);
@@ -55,7 +57,6 @@ function CountryCard(props) {
     <Col>
       <CardGroup>
         <Card className="bg-dark text-white m-1">
-          {/* I will remove the flags for now, as the API is having an error at the time of writing this code */}
           <Card.Img
             variant="top"
             src={country.flags.svg}
@@ -63,7 +64,14 @@ function CountryCard(props) {
           />
           <Card.Body>
             <Card.Text>{country.name.common}</Card.Text>
-            <Card.Link href="#">View more</Card.Link>
+            <Link
+              /* to="/selected-country" */ to={{
+                pathname: '/selected-country/' + country.altSpellings[0],
+                country: country,
+              }}
+            >
+              <Button variant="outline-light">View more</Button>
+            </Link>
           </Card.Body>
         </Card>
       </CardGroup>
