@@ -16,7 +16,7 @@ export function PagesList(props) {
 
   return (
     <div>
-      <Pagination>
+      <Pagination style={{ background: 'black' }} className="m-0 w-100">
         {pageAmount.map((el, i) => {
           // mapping an Arr to better manipulate the logic of the items
           // Doing it with others method gave too many errors
@@ -37,7 +37,6 @@ export function PagesList(props) {
           items.push(
             <Pagination.Item
               key={i}
-              /* id={i} */
               active={props.currentPage === el ? true : false}
               onClick={e => {
                 e.preventDefault();

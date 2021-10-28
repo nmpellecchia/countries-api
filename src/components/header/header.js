@@ -1,23 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+//
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 export function Header() {
   return (
     <Navbar bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand href="#home">🌎 World Countries</Navbar.Brand>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="mr-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search Country</Button>
-        </Form>
+      <Container className="h-50 inline-block">
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Navbar.Brand>🌎 World Countries</Navbar.Brand>
+        </Link>
+        <div>
+          <i
+            class="devicon-github-original"
+            style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
+          ></i>
+          <i
+            class="devicon-linkedin-plain"
+            style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
+          ></i>
+        </div>
       </Container>
     </Navbar>
   );

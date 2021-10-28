@@ -1,4 +1,6 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
+//
+import './country.css';
 //
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
@@ -13,31 +15,31 @@ export function SelectedCountry() {
   return (
     <>
       <Container fluid>
-        <Row>
-          <Col>
+        <Row className="main-info">
+          <Col className="d-flex flex-column justify-content-around align-items-center">
             <h1 className="cty-title"> {country.name.common}</h1>
             <h2 className="cty-capital">Capital: {country.capital}</h2>
           </Col>
-          <Col>
-            <Image src={country.flags.svg} fluid />
+          <Col className="d-flex justify-content-center">
+            <Image className="country-img" src={country.flags.svg} fluid />
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <h2 className="cty-continent">Continent: {country.region}</h2>
-            <h2 className="cty-off-name">
+        <Row className="complement-info">
+          <Col className="p-2">
+            <h3 className="cty-continent p-3">Continent: {country.region}</h3>
+            <h3 className="cty-off-name p-3">
               Official name: {country.name.official}
-            </h2>
-            <h2 className="cty-lang">
+            </h3>
+            <h3 className="cty-lang p-3">
               Languages: {Object.values(country.languages)}
-            </h2>
+            </h3>
           </Col>
-          <Col>
-            <h2 className="cty-pop">
+          <Col className="p-2">
+            <h3 className="cty-pop p-3">
               Population: {country.population} inhabitants
-            </h2>
-            <h2 className="cty-ar">Area: {country.area} km</h2>
-            <h2 className="cty-time">Timezones: {country.timezones}</h2>
+            </h3>
+            <h3 className="cty-ar p-3">Area: {country.area} km</h3>
+            <h3 className="cty-time p-3">Timezones: {country.timezones}</h3>
           </Col>
         </Row>
       </Container>
