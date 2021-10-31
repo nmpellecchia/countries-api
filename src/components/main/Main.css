@@ -1,0 +1,17 @@
+a.page-link,
+span.page-link {
+  background-color: grey;
+  color: white;
+  border: none;
+}
+
+.page-item.disabled .page-link {
+  background-color: grey !important;
+  color: darkgray;
+  border: none;
+}
+
+.page-item.active .page-link {
+  background-color: darkgray;
+  border-color: darkgray;
+}

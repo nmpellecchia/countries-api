@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+div#root {
+  height: 100%;
+}
+
+.App {
+  min-height: 100%;
+  background: rgb(4, 3, 19);
+  color: rgb(243, 242, 255);
+}

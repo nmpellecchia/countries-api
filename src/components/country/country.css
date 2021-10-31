@@ -1,0 +1,25 @@
+img.country-img {
+  margin: 1rem;
+  width: 25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+h1.cty-title {
+  font-size: 3.3rem;
+  text-decoration: underline;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.cty-lang,
+.cty-time {
+  overflow-wrap: break-word;
+}

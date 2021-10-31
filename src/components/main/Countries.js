@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
 
 export function CountryList(props) {
@@ -32,11 +31,10 @@ export function CountryList(props) {
   }, [props.currentPage]);
 
   return (
-    <Container>
+    <Container fluid className="m-0 w-100">
       {slicedCountries.map((ctries, i) => {
         let toReturn = [];
-        /* console.log('asdfr');
-        console.log(ctries); */
+
         toReturn.push(
           <Row key={i}>
             {ctries.map((ctry, i) => {
@@ -55,26 +53,25 @@ function CountryCard(props) {
   const { country } = props;
   return (
     <Col>
-      <CardGroup>
-        <Card className="bg-dark text-white m-1">
-          <Card.Img
-            variant="top"
-            src={country.flags.svg}
-            alt={`Flag of ${country.name.common}`}
-          />
-          <Card.Body>
-            <Card.Text>{country.name.common}</Card.Text>
-            <Link
-              /* to="/selected-country" */ to={{
-                pathname: '/selected-country/' + country.altSpellings[0],
-                country: country,
-              }}
-            >
-              <Button variant="outline-light">View more</Button>
-            </Link>
-          </Card.Body>
-        </Card>
-      </CardGroup>
+      <Card className="bg-dark text-white m-1" style={{ height: '90%' }}>
+        <Card.Img
+          variant="top"
+          src={country.flags.svg}
+          alt={`Flag of ${country.name.common}`}
+          style={{ objectFit: 'cover', height: '50%' }}
+        />
+        <Card.Body className="d-flex flex-column justify-content-around">
+          <Card.Text>{country.name.common}</Card.Text>
+          <Link
+            /* to="/selected-country" */ to={{
+              pathname: '/selected-country/' + country.altSpellings[0],
+              country: country,
+            }}
+          >
+            <Button variant="outline-light">View more</Button>
+          </Link>
+        </Card.Body>
+      </Card>
     </Col>
   );
 }
