@@ -12,14 +12,26 @@ export function Header() {
           <Navbar.Brand>🌎 World Countries</Navbar.Brand>
         </Link>
         <div>
-          <i
-            class="devicon-github-original"
-            style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
-          ></i>
-          <i
-            class="devicon-linkedin-plain"
-            style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
-          ></i>
+          <a
+            href="https://github.com/nmpellecchia"
+            rel="external"
+            style={{ textDecoration: 'none' }}
+          >
+            <i
+              class="devicon-github-original"
+              style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
+            ></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nicolas-pellecchia-440a01217/"
+            rel="external"
+            style={{ textDecoration: 'none' }}
+          >
+            <i
+              class="devicon-linkedin-plain"
+              style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
+            ></i>
+          </a>
         </div>
       </Container>
     </Navbar>
