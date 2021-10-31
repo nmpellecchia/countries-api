@@ -1,22 +1,29 @@
 import './App.css';
-import { useEffect } from 'react';
-
+//
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 ////// Bootstrap imports //////
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* import Button from 'react-bootstrap/Button'; */
-////// Components //////
-import { getAllCountries } from './utilities/services/countries.js';
+///// Components ///////
+import { Header } from './components/header/header.js';
+import { MainBody } from './components/main/MainPage.js';
+import { SelectedCountry } from './components/country/country';
 
 function App() {
-  // useEffect is used to execute things that don't directly affect outputs
-  useEffect(() => {
-    getAllCountries();
-  }, []); // An empty arr tells this effect to execute only once after initial rendering
-
   return (
-    <div className="App">
-      <p>Hello!</p>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path="/selected-country">
+            <SelectedCountry />
+          </Route>
+          <Route path="/">
+            <MainBody />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
