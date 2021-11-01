@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+## About this project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My goal was to create a complete and responsive React app that allows to search and display basic information about any country in the world.
+I made it using create-react-app, React Router 5.3.0, Bootstrap 5.1.0 and JQuery 3.6.0.
 
-## Available Scripts
+## Code examples
 
-In the project directory, you can run:
+- A somewhat complex logic inside the app. Used to display the countries.
 
-### `npm start`
+```javascript
+useEffect(() => {
+  let allCountries;
+  let items = [];
+  props.currentPage === 1
+    ? (allCountries = getCountries(parseInt(props.currentPage)))
+    : // countries are stored 1_25; 26_50 etc. This formula gives the correct numbers to get from the storage
+      // E.g.: x(offset)*y(pageNumber)+1 ::: 25*2+1 = 51
+      (allCountries = getCountries(
+        PAGE_OFFSET * parseInt(props.currentPage) + 1
+      ));
+  // get the countries divided in the amount I want
+  while (allCountries.length) {
+    items.push(allCountries.splice(0, amountPerRow));
+  }
+  setSlicedCountries(items);
+}, [props.currentPage]);
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Dynamic code to get whatever key is necessary
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```javascript
+const exp = `countries_${offset}_${offset + MAX_COUNTRIES - 1}`;
+const allCountries = JSON.parse(localStorage.getItem(exp));
 
-### `npm test`
+// Check if the key doesn't exist
+if (allCountries === null) {
+  throw new Error('Countries not found inside local storage');
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Simple mock test using Jest
 
-### `npm run build`
+```javascript
+test('Fail allCountries API call', async () => {
+  jQuery.get = jest
+    .fn()
+    .mockImplementationOnce(() => Promise.reject(new Error('test error')));
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  await expect(getAllCountries()).rejects.toStrictEqual(
+    new Error("Couldn't access the service")
+  );
+});
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Why I built it like this
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- One of my purposes in this project was to learn and practice React Hooks. So I did not use libraries like Redux to manage my states.
 
-### `npm run eject`
+- Bootstrap is an amazing framework for styling components in an easy and responsive manner. And it even has a version exclusive to React, with many amazing components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- I wrote my tests using Jest. A framework that already comes with create-react-app. It's syntax is simple enough that even a beginner can use it, wich I think is great.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- The API used is [REST COUNTRIES](https://restcountries.com/). The version at the time of making this project is 3.1. Wich changed several things in respect to the previous version. [**Example request**](https://restcountries.com/v3.1/name/peru)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Possible future changes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If I have time in the future, I would like to:
 
-## Learn More
+- Display the countries alphabetically
+- More personalized style
+- Search country function
+- Add more tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you want to run this project, clone the source or download the .zip and open with your code editor.
 
-### Code Splitting
+Install the project dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm install
+```
 
-### Analyzing the Bundle Size
+Start the app:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm start
+```

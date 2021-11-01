@@ -18,7 +18,7 @@ export function Header() {
             style={{ textDecoration: 'none' }}
           >
             <i
-              class="devicon-github-original"
+              className="devicon-github-original"
               style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
             ></i>
           </a>
@@ -28,7 +28,7 @@ export function Header() {
             style={{ textDecoration: 'none' }}
           >
             <i
-              class="devicon-linkedin-plain"
+              className="devicon-linkedin-plain"
               style={{ color: 'white', fontSize: '2rem', padding: '1rem' }}
             ></i>
           </a>
