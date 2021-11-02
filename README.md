@@ -5,7 +5,7 @@ I made it using create-react-app, React Router 5.3.0, Bootstrap 5.1.0 and JQuery
 
 ## Code examples
 
-- A somewhat complex logic inside the app. Used to display the countries.
+- This is the logic that controls what countries are shown on screen at any given time.
 
 ```javascript
 useEffect(() => {
@@ -26,7 +26,7 @@ useEffect(() => {
 }, [props.currentPage]);
 ```
 
-- Dynamic code to get whatever key is necessary
+- Dynamic code to get whatever key is necessary.
 
 ```javascript
 const exp = `countries_${offset}_${offset + MAX_COUNTRIES - 1}`;
@@ -38,7 +38,7 @@ if (allCountries === null) {
 }
 ```
 
-- Simple mock test using Jest
+- Simple mock test using Jest.
 
 ```javascript
 test('Fail allCountries API call', async () => {
@@ -60,7 +60,7 @@ test('Fail allCountries API call', async () => {
 
 - I wrote my tests using Jest. A framework that already comes with create-react-app. It's syntax is simple enough that even a beginner can use it, wich I think is great.
 
-- The API used is [REST COUNTRIES](https://restcountries.com/). The version at the time of making this project is 3.1. Wich changed several things in respect to the previous version. [**Example request**](https://restcountries.com/v3.1/name/peru)
+- The API used is [REST COUNTRIES](https://restcountries.com/). The version at the time of making this project is 3.1. Wich changed several things in respect to the previous version. [**Example request**](https://restcountries.com/v3.1/name/peru).
 
 ## Possible future changes
 
